@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.effect.PerspectiveTransform?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="551.0" prefWidth="1047.0" style="-fx-background-image: url(&quot;https://i.pinimg.com/736x/7f/19/0d/7f190de2ca607010d778717d8ef5e095.jpg&quot;); -fx-background-position: center; -fx-background-size: 100% 100%; -fx-background-repeat: no-repeat;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button id="buttonCliente" contentDisplay="CENTER" layoutX="443.0" layoutY="171.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="186.0" style="-fx-background-color: transparent; -fx-border-color: cyan; -fx-border-radius: 10; -fx-border-width: 2px; -fx-effect: dropshadow(three-pass-box, cyan, 10, 0.5, 0, 0);" text="Clientes" textAlignment="CENTER" textFill="AQUA">
+         <font>
+            <Font name="MingLiU-ExtB" size="25.0" />
+         </font>
+         <effect>
+            <Glow level="0.0">
+               <input>
+                  <PerspectiveTransform />
+               </input>
+            </Glow>
+         </effect>
+      </Button>
+      <Button id="buttonPedidos" fx:id="botonneon1" contentDisplay="CENTER" layoutX="629.0" layoutY="313.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="186.0" style="-fx-background-color: transparent; -fx-border-color: cyan; -fx-border-radius: 10; -fx-border-width: 2px; -fx-effect: dropshadow(three-pass-box, cyan, 10, 0.5, 0, 0);" text="Pedidos" textAlignment="CENTER" textFill="AQUA">
+         <font>
+            <Font name="MingLiU-ExtB" size="25.0" />
+         </font>
+      </Button>
+      <Button id="buttonProductos" fx:id="botonneon2" contentDisplay="CENTER" layoutX="809.0" layoutY="171.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="186.0" style="-fx-background-color: transparent; -fx-border-color: cyan; -fx-border-radius: 10; -fx-border-width: 2px; -fx-effect: dropshadow(three-pass-box, cyan, 10, 0.5, 0, 0);" text="Productos" textAlignment="CENTER" textFill="AQUA">
+         <font>
+            <Font name="MingLiU-ExtB" size="25.0" />
+         </font>
+      </Button>
+      <Label id="labelTitulo" layoutX="406.0" layoutY="14.0" prefHeight="157.0" prefWidth="610.0" text="Gestión Restaurante">
+         <font>
+            <Font name="Noto Serif Lao Regular" size="63.0" />
+         </font>
+         <textFill>
+            <LinearGradient cycleMethod="REFLECT" endX="0.7393364928909952" endY="0.6919431279620853" startX="0.6729857819905212" startY="0.3459715639810426">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color green="0.33095237612724304" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.18000000715255737" green="1.0" blue="0.41428571939468384" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+   </children>
+</AnchorPane>
