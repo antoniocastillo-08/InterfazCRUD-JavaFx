@@ -25,7 +25,7 @@
                   <Font name="MingLiU-ExtB" size="25.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="64.0" prefWidth="206.0" style="-fx-background-color: transparent; -fx-border-color: cyan; -fx-border-radius: 10; -fx-border-width: 2`x; -fx-effect: dropshadow(three-pass-box, cyan, 10, 0.5, 0, 0);" text="Modificar" textFill="AQUA">
+            <Button fx:id="btnModificar" mnemonicParsing="false" prefHeight="64.0" prefWidth="206.0" style="-fx-background-color: transparent; -fx-border-color: cyan; -fx-border-radius: 10; -fx-border-width: 2`x; -fx-effect: dropshadow(three-pass-box, cyan, 10, 0.5, 0, 0);" text="Modificar" textFill="AQUA">
                <font>
                   <Font name="MingLiU-ExtB" size="25.0" />
                </font>
@@ -33,7 +33,7 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="64.0" prefWidth="206.0" style="-fx-background-color: transparent; -fx-border-color: cyan; -fx-border-radius: 10; -fx-border-width: 2`x; -fx-effect: dropshadow(three-pass-box, cyan, 10, 0.5, 0, 0);" text="Buscar" textFill="AQUA">
+            <Button fx:id="btnBuscar" mnemonicParsing="false" prefHeight="64.0" prefWidth="206.0" style="-fx-background-color: transparent; -fx-border-color: cyan; -fx-border-radius: 10; -fx-border-width: 2`x; -fx-effect: dropshadow(three-pass-box, cyan, 10, 0.5, 0, 0);" text="Buscar" textFill="AQUA">
                <font>
                   <Font name="MingLiU-ExtB" size="25.0" />
                </font>
@@ -41,7 +41,7 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="64.0" prefWidth="206.0" style="-fx-background-color: transparent; -fx-border-color: cyan; -fx-border-radius: 10; -fx-border-width: 2`x; -fx-effect: dropshadow(three-pass-box, cyan, 10, 0.5, 0, 0);" text="Elimiinar" textFill="AQUA">
+            <Button fx:id="btnEliminar" mnemonicParsing="false" prefHeight="64.0" prefWidth="206.0" style="-fx-background-color: transparent; -fx-border-color: cyan; -fx-border-radius: 10; -fx-border-width: 2`x; -fx-effect: dropshadow(three-pass-box, cyan, 10, 0.5, 0, 0);" text="Eliminar" textFill="AQUA">
                <font>
                   <Font name="MingLiU-ExtB" size="25.0" />
                </font>
@@ -69,7 +69,7 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <TableView fx:id="tableView" layoutX="322.0" layoutY="117.0" prefHeight="328.0" prefWidth="445.0">
+      <TableView fx:id="tableView" layoutX="322.0" layoutY="117.0" prefHeight="328.0" prefWidth="500.0">
          <columns>
             <TableColumn fx:id="columnId" prefWidth="75.0" text="ID" />
             <TableColumn fx:id="columnNombre" prefWidth="150.0" text="Nombre" />
@@ -80,6 +80,9 @@
       <TextField fx:id="txtNombre" layoutX="933.0" layoutY="75.0" prefHeight="37.0" prefWidth="242.0" promptText="Nombre" visible="false" />
       <TextField fx:id="txtTelefono" layoutX="933.0" layoutY="145.0" prefHeight="37.0" prefWidth="242.0" promptText="Teléfono" visible="false"/>
       <TextField fx:id="txtDireccion" layoutX="933.0" layoutY="211.0" prefHeight="37.0" prefWidth="242.0" promptText="Dirección" visible="false"/>
+
+      <TextField fx:id="txtBuscar" layoutX="933.0" layoutY="300.0" prefHeight="37.0" prefWidth="242.0" promptText="Buscar" visible="false"/>
+
       <Button fx:id="btnGuardar" layoutX="500.0" layoutY="440.0" text="Guardar" visible="false"/>
    </children>
 </AnchorPane>

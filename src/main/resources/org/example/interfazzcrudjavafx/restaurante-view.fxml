@@ -10,9 +10,9 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="551.0" prefWidth="1047.0" style="-fx-background-image: url(&quot;https://i.pinimg.com/736x/7f/19/0d/7f190de2ca607010d778717d8ef5e095.jpg&quot;); -fx-background-position: center; -fx-background-size: 100% 100%; -fx-background-repeat: no-repeat;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:controller="org.example.interfazzcrudjavafx.RestauranteController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="551.0" prefWidth="1047.0" style="-fx-background-image: url(&quot;https://i.pinimg.com/736x/7f/19/0d/7f190de2ca607010d778717d8ef5e095.jpg&quot;); -fx-background-position: center; -fx-background-size: 100% 100%; -fx-background-repeat: no-repeat;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button id="buttonCliente" contentDisplay="CENTER" layoutX="443.0" layoutY="171.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="186.0" style="-fx-background-color: transparent; -fx-border-color: cyan; -fx-border-radius: 10; -fx-border-width: 2px; -fx-effect: dropshadow(three-pass-box, cyan, 10, 0.5, 0, 0);" text="Clientes" textAlignment="CENTER" textFill="AQUA">
+      <Button fx:id= "buttonCliente" onAction="#irAVentanaClientes"  contentDisplay="CENTER" layoutX="443.0" layoutY="171.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="186.0" style="-fx-background-color: transparent; -fx-border-color: cyan; -fx-border-radius: 10; -fx-border-width: 2px; -fx-effect: dropshadow(three-pass-box, cyan, 10, 0.5, 0, 0);" text="Clientes" textAlignment="CENTER" textFill="AQUA">
          <font>
             <Font name="MingLiU-ExtB" size="25.0" />
          </font>
