@@ -1,4 +1,4 @@
-package org.example.interfazzcrudjavafx;
+package org.example.interfazzcrudjavafx.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

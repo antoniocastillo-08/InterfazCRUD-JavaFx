@@ -1,4 +1,4 @@
-package org.example.interfazzcrudjavafx;
+package org.example.interfazzcrudjavafx.clases;
 
 public class Cliente {
     private int id;
@@ -17,4 +17,8 @@ public class Cliente {
     public String getNombre() { return nombre; }
     public String getTelefono() { return telefono; }
     public String getDireccion() { return direccion; }
+    public void setId(int id) { this.id = id; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
+    public void setTelefono(String telefono) { this.telefono = telefono; }
+    public void setDireccion(String direccion) { this.direccion = direccion; }
 }

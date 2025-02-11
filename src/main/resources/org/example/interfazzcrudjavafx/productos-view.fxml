@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="478.0" prefWidth="1221.0" style="-fx-background-image: url(&quot;https://i.pinimg.com/736x/f0/17/45/f01745b1f4a2b3cea0d5ef5aaf53a12f.jpg&quot;); -fx-background-position: center; -fx-background-size: 100% 100%; -fx-background-repeat: no-repeat;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.interfazzcrudjavafx.controllers.ProductosController">
+    <children>
+        <VBox layoutX="52.0" layoutY="117.0" prefHeight="296.0" prefWidth="313.0">
+            <children>
+                <Button fx:id="btnCrear" mnemonicParsing="false" prefHeight="64.0" prefWidth="206.0" style="-fx-background-color: transparent; -fx-border-color: cyan; -fx-border-radius: 10; -fx-border-width: 2`x; -fx-effect: dropshadow(three-pass-box, cyan, 10, 0.5, 0, 0);" text="Crear" textFill="AQUA">
+                    <VBox.margin>
+                        <Insets bottom="10.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font name="MingLiU-ExtB" size="25.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btnModificar" mnemonicParsing="false" prefHeight="64.0" prefWidth="206.0" style="-fx-background-color: transparent; -fx-border-color: cyan; -fx-border-radius: 10; -fx-border-width: 2`x; -fx-effect: dropshadow(three-pass-box, cyan, 10, 0.5, 0, 0);" text="Modificar" textFill="AQUA">
+                    <font>
+                        <Font name="MingLiU-ExtB" size="25.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="10.0" />
+                    </VBox.margin>
+                </Button>
+                <Button fx:id="btnBuscar" mnemonicParsing="false" prefHeight="64.0" prefWidth="206.0" style="-fx-background-color: transparent; -fx-border-color: cyan; -fx-border-radius: 10; -fx-border-width: 2`x; -fx-effect: dropshadow(three-pass-box, cyan, 10, 0.5, 0, 0);" text="Buscar" textFill="AQUA">
+                    <font>
+                        <Font name="MingLiU-ExtB" size="25.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="10.0" />
+                    </VBox.margin>
+                </Button>
+                <Button fx:id="btnEliminar" mnemonicParsing="false" prefHeight="64.0" prefWidth="206.0" style="-fx-background-color: transparent; -fx-border-color: cyan; -fx-border-radius: 10; -fx-border-width: 2`x; -fx-effect: dropshadow(three-pass-box, cyan, 10, 0.5, 0, 0);" text="Eliminar" textFill="AQUA">
+                    <font>
+                        <Font name="MingLiU-ExtB" size="25.0" />
+                    </font>
+                </Button>
+            </children>
+        </VBox>
+        <Label fx:id="labelTitulo" layoutX="322.0" layoutY="31.0" prefHeight="84.0" prefWidth="269.0" text="Productos">
+            <font>
+                <Font name="Noto Serif Lao Regular" size="50.0" />
+            </font>
+            <textFill>
+                <LinearGradient cycleMethod="REFLECT" endX="0.7393364928909952" endY="0.6919431279620853" startX="0.6729857819905212" startY="0.3459715639810426">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color green="0.33095237612724304" blue="1.0" />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="0.18000000715255737" green="1.0" blue="0.41428571939468384" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </LinearGradient>
+            </textFill>
+        </Label>
+        <TableView fx:id="tableView" layoutX="322.0" layoutY="117.0" prefHeight="328.0" prefWidth="500.0">
+            <columns>
+                <TableColumn fx:id="columnId" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="columnNombre" prefWidth="150.0" text="Nombre" />
+                <TableColumn fx:id="columnTelefono" prefWidth="150.0" text="Teléfono" />
+                <TableColumn fx:id="columnDireccion" prefWidth="150.0" text="Direccion" />
+            </columns>
+        </TableView>
+        <TextField fx:id="txtNombre" layoutX="933.0" layoutY="75.0" prefHeight="37.0" prefWidth="242.0" promptText="Nombre" />
+        <TextField fx:id="txtTelefono" layoutX="933.0" layoutY="145.0" prefHeight="37.0" prefWidth="242.0" promptText="Descripcion" />
+
+        <TextField fx:id="txtBuscar" layoutX="933.0" layoutY="300.0" prefHeight="37.0" prefWidth="242.0" promptText="Buscar" />
+
+        <Button fx:id="btnGuardar" layoutX="500.0" layoutY="440.0" text="Guardar" visible="false" />
+      <CheckBox fx:id="checkDisponible" layoutX="933.0" layoutY="202.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="199.0" text="Disponibilidad">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </CheckBox>
+    </children>
+</AnchorPane>

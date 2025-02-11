@@ -13,7 +13,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="478.0" prefWidth="1221.0" style="-fx-background-image: url(&quot;https://i.pinimg.com/736x/f0/17/45/f01745b1f4a2b3cea0d5ef5aaf53a12f.jpg&quot;); -fx-background-position: center; -fx-background-size: 100% 100%; -fx-background-repeat: no-repeat;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.interfazzcrudjavafx.ClienteController">
+<AnchorPane prefHeight="478.0" prefWidth="1221.0" style="-fx-background-image: url(&quot;https://i.pinimg.com/736x/f0/17/45/f01745b1f4a2b3cea0d5ef5aaf53a12f.jpg&quot;); -fx-background-position: center; -fx-background-size: 100% 100%; -fx-background-repeat: no-repeat;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.interfazzcrudjavafx.controllers.ClienteController">
    <children>
       <VBox layoutX="52.0" layoutY="117.0" prefHeight="296.0" prefWidth="313.0">
          <children>

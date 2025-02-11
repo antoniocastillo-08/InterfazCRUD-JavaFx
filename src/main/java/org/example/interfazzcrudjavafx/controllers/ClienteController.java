@@ -1,10 +1,13 @@
-package org.example.interfazzcrudjavafx;
+package org.example.interfazzcrudjavafx.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.example.interfazzcrudjavafx.DatabaseConnection;
+import org.example.interfazzcrudjavafx.clases.Cliente;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
