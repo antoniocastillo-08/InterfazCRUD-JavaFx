@@ -74,14 +74,14 @@
             <columns>
                 <TableColumn fx:id="columnId" prefWidth="75.0" text="ID" />
                 <TableColumn fx:id="columnNombre" prefWidth="150.0" text="Nombre" />
-                <TableColumn fx:id="columnTelefono" prefWidth="150.0" text="Teléfono" />
-                <TableColumn fx:id="columnDireccion" prefWidth="150.0" text="Direccion" />
+                <TableColumn fx:id="columnCategoría" prefWidth="150.0" text="Categoría" />
+                <TableColumn fx:id="columnDisponibilidad" prefWidth="150.0" text="Disponibilidad" />
             </columns>
         </TableView>
-        <TextField fx:id="txtNombre" layoutX="933.0" layoutY="75.0" prefHeight="37.0" prefWidth="242.0" promptText="Nombre" />
-        <TextField fx:id="txtTelefono" layoutX="933.0" layoutY="145.0" prefHeight="37.0" prefWidth="242.0" promptText="Descripcion" />
+        <TextField fx:id="txtNombre" layoutX="933.0" layoutY="75.0" prefHeight="37.0" prefWidth="242.0" promptText="Nombre"/>
+        <TextField fx:id="txtCategoría" layoutX="933.0" layoutY="145.0" prefHeight="37.0" prefWidth="242.0" promptText="Categoría" />
 
-        <TextField fx:id="txtBuscar" layoutX="933.0" layoutY="300.0" prefHeight="37.0" prefWidth="242.0" promptText="Buscar" />
+        <TextField fx:id="txtDisponibilidad" layoutX="933.0" layoutY="300.0" prefHeight="37.0" prefWidth="242.0" promptText="Buscar" />
 
         <Button fx:id="btnGuardar" layoutX="500.0" layoutY="440.0" text="Guardar" visible="false" />
       <CheckBox fx:id="checkDisponible" layoutX="933.0" layoutY="202.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="199.0" text="Disponibilidad">

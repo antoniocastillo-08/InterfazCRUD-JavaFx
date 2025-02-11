@@ -21,8 +21,8 @@ public class ProductosController {
     @FXML private TableColumn<Cliente, String> columnDisponibilidad;
 
     @FXML private TextField txtNombre;
-    @FXML private TextField txtTelefono;
-    @FXML private TextField txtDireccion;
+    @FXML private TextField txtCategoria;
+    @FXML private CheckBox chbDisponibilidad;
     @FXML private TextField txtBuscar;
 
     @FXML private Button btnCrear;
@@ -31,7 +31,7 @@ public class ProductosController {
     @FXML private Button btnEliminar;
     @FXML private Button btnBuscar;
 
-    private ObservableList<Cliente> listaClientes = FXCollections.observableArrayList();
+    private ObservableList<Cliente> listaProductos = FXCollections.observableArrayList();
     private Cliente clienteSeleccionado = null;
 
     @FXML
