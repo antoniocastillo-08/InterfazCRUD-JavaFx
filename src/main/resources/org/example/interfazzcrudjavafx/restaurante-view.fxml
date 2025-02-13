@@ -24,12 +24,12 @@
             </Glow>
          </effect>
       </Button>
-      <Button id="buttonPedidos" fx:id="botonneon1" contentDisplay="CENTER" layoutX="629.0" layoutY="313.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="186.0" style="-fx-background-color: transparent; -fx-border-color: cyan; -fx-border-radius: 10; -fx-border-width: 2px; -fx-effect: dropshadow(three-pass-box, cyan, 10, 0.5, 0, 0);" text="Pedidos" textAlignment="CENTER" textFill="AQUA">
+      <Button fx:id="buttonPedidos"  contentDisplay="CENTER" layoutX="629.0" layoutY="313.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="186.0" style="-fx-background-color: transparent; -fx-border-color: cyan; -fx-border-radius: 10; -fx-border-width: 2px; -fx-effect: dropshadow(three-pass-box, cyan, 10, 0.5, 0, 0);" text="Pedidos" textAlignment="CENTER" textFill="AQUA">
          <font>
             <Font name="MingLiU-ExtB" size="25.0" />
          </font>
       </Button>
-      <Button id="buttonProductos" fx:id="botonneon2" contentDisplay="CENTER" layoutX="809.0" layoutY="171.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="186.0" style="-fx-background-color: transparent; -fx-border-color: cyan; -fx-border-radius: 10; -fx-border-width: 2px; -fx-effect: dropshadow(three-pass-box, cyan, 10, 0.5, 0, 0);" text="Productos" textAlignment="CENTER" textFill="AQUA">
+      <Button fx:id="buttonProductos" contentDisplay="CENTER" layoutX="809.0" layoutY="171.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="186.0" style="-fx-background-color: transparent; -fx-border-color: cyan; -fx-border-radius: 10; -fx-border-width: 2px; -fx-effect: dropshadow(three-pass-box, cyan, 10, 0.5, 0, 0);" text="Productos" textAlignment="CENTER" textFill="AQUA">
          <font>
             <Font name="MingLiU-ExtB" size="25.0" />
          </font>

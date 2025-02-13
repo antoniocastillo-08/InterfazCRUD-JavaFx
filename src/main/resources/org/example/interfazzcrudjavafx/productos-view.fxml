@@ -74,7 +74,7 @@
             <columns>
                 <TableColumn fx:id="columnId" prefWidth="75.0" text="ID" />
                 <TableColumn fx:id="columnNombre" prefWidth="150.0" text="Nombre" />
-                <TableColumn fx:id="columnCategoría" prefWidth="150.0" text="Categoría" />
+                <TableColumn fx:id="columnCategoria" prefWidth="150.0" text="Categoría" />
                 <TableColumn fx:id="columnDisponibilidad" prefWidth="150.0" text="Disponibilidad" />
             </columns>
         </TableView>

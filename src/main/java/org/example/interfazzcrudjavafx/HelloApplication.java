@@ -17,7 +17,7 @@ import java.util.List;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("restaurante-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("productos-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1047, 551);
         stage.setTitle("Gestion De Restaurante");
         stage.setScene(scene);

@@ -25,7 +25,7 @@
                   <Font name="MingLiU-ExtB" size="25.0" />
                </font>
             </Button>
-            <Button fx:id="btnModificar" mnemonicParsing="false" prefHeight="64.0" prefWidth="206.0" style="-fx-background-color: transparent; -fx-border-color: cyan; -fx-border-radius: 10; -fx-border-width: 2`x; -fx-effect: dropshadow(three-pass-box, cyan, 10, 0.5, 0, 0);" text="Modificar" textFill="AQUA">
+            <Button fx:id="btnModificar" mnemonicParsing="false" prefHeight="64.0" prefWidth="206.0" style="-fx-background-color: transparent; -fx-border-color: cyan; -fx-border-radius: 10; -fx-border-width: 2px; -fx-effect: dropshadow(three-pass-box, cyan, 10, 0.5, 0, 0);" text="Modificar" textFill="AQUA">
                <font>
                   <Font name="MingLiU-ExtB" size="25.0" />
                </font>
@@ -33,7 +33,7 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btnBuscar" mnemonicParsing="false" prefHeight="64.0" prefWidth="206.0" style="-fx-background-color: transparent; -fx-border-color: cyan; -fx-border-radius: 10; -fx-border-width: 2`x; -fx-effect: dropshadow(three-pass-box, cyan, 10, 0.5, 0, 0);" text="Buscar" textFill="AQUA">
+            <Button fx:id="btnBuscar" mnemonicParsing="false" prefHeight="64.0" prefWidth="206.0" style="-fx-background-color: transparent; -fx-border-color: cyan; -fx-border-radius: 10; -fx-border-width: 2px; -fx-effect: dropshadow(three-pass-box, cyan, 10, 0.5, 0, 0);" text="Buscar" textFill="AQUA">
                <font>
                   <Font name="MingLiU-ExtB" size="25.0" />
                </font>
@@ -41,7 +41,7 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btnEliminar" mnemonicParsing="false" prefHeight="64.0" prefWidth="206.0" style="-fx-background-color: transparent; -fx-border-color: cyan; -fx-border-radius: 10; -fx-border-width: 2`x; -fx-effect: dropshadow(three-pass-box, cyan, 10, 0.5, 0, 0);" text="Eliminar" textFill="AQUA">
+            <Button fx:id="btnEliminar" mnemonicParsing="false" prefHeight="64.0" prefWidth="206.0" style="-fx-background-color: transparent; -fx-border-color: cyan; -fx-border-radius: 10; -fx-border-width: 2px; -fx-effect: dropshadow(three-pass-box, cyan, 10, 0.5, 0, 0);" text="Eliminar" textFill="AQUA">
                <font>
                   <Font name="MingLiU-ExtB" size="25.0" />
                </font>
