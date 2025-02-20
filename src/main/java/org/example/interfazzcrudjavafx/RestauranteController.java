@@ -52,5 +52,26 @@ public class RestauranteController {
             e.printStackTrace();
         }
     }
+    @FXML
+    private void irAVentanaPedidos(ActionEvent event) {
+        try {
+            // Cargar la nueva vista
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("pedidos-view.fxml"));
+            Parent root = loader.load();
+
+            // Obtener el escenario actual (ventana) y cambiar la escena
+            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+
+            // Cerrar la ventana actual
+            stage.close();
+
+            // Mostrar la nueva ventana
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }

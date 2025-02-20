@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="552.0" prefWidth="1361.0" style="-fx-background-image: url(&quot;https://i.pinimg.com/736x/f0/17/45/f01745b1f4a2b3cea0d5ef5aaf53a12f.jpg&quot;); -fx-background-position: center; -fx-background-size: 100% 100%; -fx-background-repeat: no-repeat;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.interfazzcrudjavafx.PedidoController">
+    <children>
+        <VBox layoutX="41.0" layoutY="44.0" prefHeight="466.0" prefWidth="313.0">
+            <children>
+                <Button fx:id="btnCrear" mnemonicParsing="false" prefHeight="64.0" prefWidth="206.0" style="-fx-background-color: transparent; -fx-border-color: cyan; -fx-border-radius: 10; -fx-border-width: 2px; -fx-effect: dropshadow(three-pass-box, cyan, 10, 0.5, 0, 0);" text="Crear" textFill="AQUA">
+                    <VBox.margin>
+                        <Insets bottom="10.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font name="MingLiU-ExtB" size="25.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btnModificar" mnemonicParsing="false" prefHeight="64.0" prefWidth="206.0" style="-fx-background-color: transparent; -fx-border-color: cyan; -fx-border-radius: 10; -fx-border-width: 2px; -fx-effect: dropshadow(three-pass-box, cyan, 10, 0.5, 0, 0);" text="Modificar" textFill="AQUA">
+                    <font>
+                        <Font name="MingLiU-ExtB" size="25.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="10.0" />
+                    </VBox.margin>
+                </Button>
+                <Button fx:id="btnBuscar" mnemonicParsing="false" prefHeight="64.0" prefWidth="206.0" style="-fx-background-color: transparent; -fx-border-color: cyan; -fx-border-radius: 10; -fx-border-width: 2px; -fx-effect: dropshadow(three-pass-box, cyan, 10, 0.5, 0, 0);" text="Buscar" textFill="AQUA">
+                    <font>
+                        <Font name="MingLiU-ExtB" size="25.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="10.0" />
+                    </VBox.margin>
+                </Button>
+                <Button fx:id="btnEliminar" mnemonicParsing="false" prefHeight="64.0" prefWidth="206.0" style="-fx-background-color: transparent; -fx-border-color: cyan; -fx-border-radius: 10; -fx-border-width: 2px; -fx-effect: dropshadow(three-pass-box, cyan, 10, 0.5, 0, 0);" text="Eliminar" textFill="AQUA">
+                    <font>
+                        <Font name="MingLiU-ExtB" size="25.0" />
+                    </font>
+                </Button>
+            <Button fx:id="btnMostrarPedidos" mnemonicParsing="false" prefHeight="63.0" prefWidth="235.0" style="-fx-background-color: transparent; -fx-border-color: green; -fx-border-radius: 10; -fx-border-width: 2px; -fx-effect: dropshadow(three-pass-box, green, 10, 0.5, 0, 0);" text="Mostrar Pedidos" textFill="#00ff5c">
+               <font>
+                  <Font name="MingLiU-ExtB" size="25.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+            </Button>
+                <Button fx:id="btnVolver" mnemonicParsing="false" prefHeight="64.0" prefWidth="206.0" style="-fx-background-color: transparent; -fx-border-color: cyan; -fx-border-radius: 10; -fx-border-width: 2px; -fx-effect: dropshadow(three-pass-box, cyan, 10, 0.5, 0, 0);" text="Volver" textFill="AQUA">
+                    <font>
+                        <Font name="MingLiU-ExtB" size="25.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets top="50.0" />
+                    </VBox.margin>
+                </Button>
+            </children>
+        </VBox>
+        <Label id="labelTitulo" layoutX="322.0" layoutY="33.0" prefHeight="84.0" prefWidth="206.0" text="Pedidos">
+            <font>
+                <Font name="Noto Serif Lao Regular" size="50.0" />
+            </font>
+            <textFill>
+                <LinearGradient cycleMethod="REFLECT" endX="0.7393364928909952" endY="0.6919431279620853" startX="0.6729857819905212" startY="0.3459715639810426">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color green="0.33095237612724304" blue="1.0" />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="0.18000000715255737" green="1.0" blue="0.41428571939468384" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </LinearGradient>
+            </textFill>
+        </Label>
+
+        <TableView fx:id="tableView" layoutX="322.0" layoutY="110.0" prefHeight="376.0" prefWidth="516.0">
+            <columns>
+                <TableColumn fx:id="columnId" prefWidth="75.0" text="Id_Pedido" />
+                <TableColumn fx:id="columnIdCliente" prefWidth="87.0" text="Id_Cliente" />
+                <TableColumn fx:id="columnFecha" prefWidth="71.0" text="Fecha" />
+                <TableColumn fx:id="columnHora" prefWidth="86.0" text="Hora" />
+                <TableColumn fx:id="columnTotal" prefWidth="82.0" text="Total" />
+                <TableColumn fx:id="columnEstado" prefWidth="114.0" text="Estado" />
+            </columns>
+        </TableView>
+      <ChoiceBox fx:id="choiceClientes" layoutX="1082.0" layoutY="82.0" prefHeight="35.0" prefWidth="192.0" />
+      <Label id="labelTitulo" layoutX="962.0" layoutY="74.0" prefHeight="52.0" prefWidth="108.0" text="Cliente" textFill="WHITE">
+         <font>
+            <Font name="Noto Serif Lao Regular" size="30.0" />
+         </font>
+      </Label>
+      <Label id="labelTitulo" layoutX="982.0" layoutY="144.0" prefHeight="52.0" prefWidth="75.0" style="-fx-background-color: black;" text="Total" textFill="WHITE">
+         <font>
+            <Font name="Noto Serif Lao Regular" size="30.0" />
+         </font>
+      </Label>
+      <Spinner fx:id="spinnerTotal" layoutX="1147.0" layoutY="158.0" prefHeight="25.0" prefWidth="75.0" />
+      <Label id="labelTitulo" layoutX="981.0" layoutY="221.0" prefHeight="52.0" prefWidth="96.0" style="-fx-background-color: black;" text="Estado" textFill="WHITE">
+         <font>
+            <Font name="Noto Serif Lao Regular" size="30.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="choiceEstado" layoutX="1085.0" layoutY="230.0" prefHeight="35.0" prefWidth="192.0" />
+      <Label id="labelTitulo" layoutX="847.0" layoutY="465.0" prefHeight="52.0" prefWidth="243.0" style="-fx-background-color: black;" text="Producto Pedido" textFill="WHITE">
+         <font>
+            <Font name="Noto Serif Lao Regular" size="30.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="choiceProducto" layoutX="1101.0" layoutY="474.0" prefHeight="35.0" prefWidth="222.0" />
+    </children>
+</AnchorPane>
