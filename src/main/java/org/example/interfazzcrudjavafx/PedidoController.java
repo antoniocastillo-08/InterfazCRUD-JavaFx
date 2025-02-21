@@ -106,7 +106,6 @@ public class PedidoController {
 
     @FXML
     private void guardarPedido() {
-        // Verificar que no falte ningún dato requerido
         if (choiceClientes.getValue() == null || choiceEstado.getValue() == null ||
                 spinnerTotal.getValue() == null || choiceProducto.getValue() == null) {
             mostrarAlerta("Error", "Faltan datos para crear el pedido. Asegúrate de seleccionar un cliente, producto y estado.");
@@ -118,10 +117,8 @@ public class PedidoController {
         LocalDate fecha = LocalDate.now();
         LocalTime hora = LocalTime.now();
 
-        // Usamos spinnerTotal para representar el total del pedido
         int cantidad = spinnerTotal.getValue();
 
-        // Primero, obtenemos el id y precio del producto seleccionado
         String productoSeleccionado = choiceProducto.getValue();
         String sqlProducto = "SELECT id, precio FROM productos WHERE nombre = ?";
 
@@ -198,22 +195,29 @@ public class PedidoController {
             return;
         }
 
-        // spinnerTotal ahora devuelve un entero
+        if (choiceClientes.getValue() == null) {
+            mostrarAlerta("Error", "Debe seleccionar un cliente.");
+            return;
+        }
+
+        int idCliente = Integer.parseInt(choiceClientes.getValue().split(" - ")[0]);
         int cantidad = spinnerTotal.getValue();
         String estado = choiceEstado.getValue();
 
-        String sql = "UPDATE pedidos SET total = ?, estado = ? WHERE id_pedido = ?";
+        String sql = "UPDATE pedidos SET id_cliente = ?, total = ?, estado = ? WHERE id_pedido = ?";
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            // Aquí, "total" se actualizaría con la cantidad actual multiplicada por el precio
-            // Se requiere lógica adicional si se desea recalcular el total, pero se asume que se actualiza con la cantidad.
-            pstmt.setInt(1, cantidad);
-            pstmt.setString(2, estado);
-            pstmt.setInt(3, pedidoSeleccionado.getId());
+            pstmt.setInt(1, idCliente);
+            pstmt.setInt(2, cantidad);
+            pstmt.setString(3, estado);
+            pstmt.setInt(4, pedidoSeleccionado.getId());
             pstmt.executeUpdate();
-            cargarPedidos();
+
+            cargarPedidos(); // Recargar la tabla con los datos actualizados
+            mostrarAlerta("Éxito", "Pedido modificado correctamente.");
         } catch (SQLException e) {
             e.printStackTrace();
+            mostrarAlerta("Error", "No se pudo modificar el pedido.");
         }
     }
 
