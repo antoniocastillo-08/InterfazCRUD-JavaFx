@@ -28,7 +28,7 @@ public class PedidoController {
     @FXML
     private TableColumn<Pedido, String> columnFecha, columnHora, columnTotal, columnEstado;
     @FXML
-    private Button btnCrear, btnModificar, btnBuscar, btnEliminar, btnMostrarPedidos;
+    private Button btnCrear, btnModificar, btnBuscar, btnEliminar, btnMostrarPedidos, btnVolver;
 
     private ObservableList<Pedido> pedidosList = FXCollections.observableArrayList();
 
@@ -46,6 +46,7 @@ public class PedidoController {
         btnBuscar.setOnAction(event -> buscarPedido());
         btnEliminar.setOnAction(event -> eliminarPedido());
         btnMostrarPedidos.setOnAction(event -> abrirDetallesPedidos());
+        btnVolver.setOnAction(event -> volverAlMenuPrincipal());
     }
 
     private void configurarColumnasTabla() {
@@ -322,20 +323,33 @@ public class PedidoController {
                     }
                 }
 
-                // Establecer el total y estado
-                spinnerTotal.getValueFactory().setValue((int) pedido.getTotal());
+                // Obtener la cantidad total de productos desde detalle_pedidos
+                String sqlCantidad = "SELECT cantidad AS total_cantidad FROM detalle_pedidos WHERE id_pedido = ?";
+                try (Connection connection = DatabaseConnection.getConnection();
+                     PreparedStatement pstmtCantidad = connection.prepareStatement(sqlCantidad)) {
+                    pstmtCantidad.setInt(1, pedido.getId());
+                    ResultSet rsCantidad = pstmtCantidad.executeQuery();
+                    if (rsCantidad.next()) {
+                        // Establecer la cantidad total en el Spinner
+                        spinnerTotal.getValueFactory().setValue(rsCantidad.getInt("total_cantidad"));
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+                // Establecer el estado
                 choiceEstado.setValue(pedido.getEstado());
 
                 // Obtener el producto asociado a este pedido desde detalle_pedidos
-                String sql = "SELECT p.nombre FROM productos p " +
+                String sqlProducto = "SELECT p.nombre FROM productos p " +
                         "JOIN detalle_pedidos dp ON p.id = dp.id_producto " +
                         "WHERE dp.id_pedido = ?";
                 try (Connection connection = DatabaseConnection.getConnection();
-                     PreparedStatement pstmt = connection.prepareStatement(sql)) {
-                    pstmt.setInt(1, pedido.getId());
-                    ResultSet rs = pstmt.executeQuery();
-                    if (rs.next()) {
-                        choiceProducto.setValue(rs.getString("nombre"));
+                     PreparedStatement pstmtProducto = connection.prepareStatement(sqlProducto)) {
+                    pstmtProducto.setInt(1, pedido.getId());
+                    ResultSet rsProducto = pstmtProducto.executeQuery();
+                    if (rsProducto.next()) {
+                        choiceProducto.setValue(rsProducto.getString("nombre"));
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -368,5 +382,18 @@ public class PedidoController {
         SpinnerValueFactory.IntegerSpinnerValueFactory valueFactory =
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10000, 0);
         spinnerTotal.setValueFactory(valueFactory);
+    }
+    private void volverAlMenuPrincipal() {
+        try {
+            // Cargar la vista del menú principal (restaurante-view.fxml)
+            Parent root = FXMLLoader.load(getClass().getResource("restaurante-view.fxml"));
+
+            // Obtener la ventana actual y configurar la nueva escena
+            Stage stage = (Stage) spinnerTotal.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
