@@ -7,7 +7,6 @@
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
@@ -104,7 +103,7 @@
             <Font name="Noto Serif Lao Regular" size="30.0" />
          </font>
       </Label>
-      <Label id="labelTitulo" layoutX="982.0" layoutY="144.0" prefHeight="52.0" prefWidth="75.0" style="-fx-background-color: black;" text="Total" textFill="WHITE">
+      <Label id="labelTitulo" layoutX="926.0" layoutY="144.0" prefHeight="52.0" prefWidth="131.0" style="-fx-background-color: black;" text="Cantidad" textFill="WHITE">
          <font>
             <Font name="Noto Serif Lao Regular" size="30.0" />
          </font>

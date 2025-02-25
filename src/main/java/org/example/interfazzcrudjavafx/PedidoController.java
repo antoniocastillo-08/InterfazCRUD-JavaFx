@@ -3,9 +3,15 @@ package org.example.interfazzcrudjavafx;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -22,7 +28,7 @@ public class PedidoController {
     @FXML
     private TableColumn<Pedido, String> columnFecha, columnHora, columnTotal, columnEstado;
     @FXML
-    private Button btnCrear, btnModificar, btnBuscar, btnEliminar;
+    private Button btnCrear, btnModificar, btnBuscar, btnEliminar, btnMostrarPedidos;
 
     private ObservableList<Pedido> pedidosList = FXCollections.observableArrayList();
 
@@ -39,6 +45,7 @@ public class PedidoController {
         btnModificar.setOnAction(event -> modificarPedido());
         btnBuscar.setOnAction(event -> buscarPedido());
         btnEliminar.setOnAction(event -> eliminarPedido());
+        btnMostrarPedidos.setOnAction(event -> abrirDetallesPedidos());
     }
 
     private void configurarColumnasTabla() {
@@ -131,7 +138,6 @@ public class PedidoController {
             if (rsProd.next()) {
                 int idProducto = rsProd.getInt("id");
                 double precioProducto = rsProd.getDouble("precio");
-                // Aquí calculamos el total del pedido con lo que haya en el spinner
                 double totalPedido = cantidad * precioProducto;
 
                 // Obtener el próximo id de pedido:
@@ -195,31 +201,63 @@ public class PedidoController {
             return;
         }
 
-        if (choiceClientes.getValue() == null) {
-            mostrarAlerta("Error", "Debe seleccionar un cliente.");
+        if (choiceClientes.getValue() == null || choiceProducto.getValue() == null) {
+            mostrarAlerta("Error", "Debe seleccionar un cliente y un producto.");
             return;
         }
 
         int idCliente = Integer.parseInt(choiceClientes.getValue().split(" - ")[0]);
         int cantidad = spinnerTotal.getValue();
         String estado = choiceEstado.getValue();
+        String productoSeleccionado = choiceProducto.getValue();
 
-        String sql = "UPDATE pedidos SET id_cliente = ?, total = ?, estado = ? WHERE id_pedido = ?";
+        // Obtener el ID del producto seleccionado
+        String sqlProducto = "SELECT id, precio FROM productos WHERE nombre = ?";
         try (Connection connection = DatabaseConnection.getConnection();
-             PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setInt(1, idCliente);
-            pstmt.setInt(2, cantidad);
-            pstmt.setString(3, estado);
-            pstmt.setInt(4, pedidoSeleccionado.getId());
-            pstmt.executeUpdate();
+             PreparedStatement pstmtProd = connection.prepareStatement(sqlProducto)) {
 
-            cargarPedidos(); // Recargar la tabla con los datos actualizados
-            mostrarAlerta("Éxito", "Pedido modificado correctamente.");
+            pstmtProd.setString(1, productoSeleccionado);
+            ResultSet rsProd = pstmtProd.executeQuery();
+
+            if (rsProd.next()) {
+                int idProducto = rsProd.getInt("id");
+                double precioProducto = rsProd.getDouble("precio");
+                double totalPedido = cantidad * precioProducto;
+
+                // Actualizar la tabla `pedidos`
+                String sqlPedido = "UPDATE pedidos SET id_cliente = ?, total = ?, estado = ? WHERE id_pedido = ?";
+                try (PreparedStatement pstmt = connection.prepareStatement(sqlPedido)) {
+                    pstmt.setInt(1, idCliente);
+                    pstmt.setDouble(2, totalPedido);
+                    pstmt.setString(3, estado);
+                    pstmt.setInt(4, pedidoSeleccionado.getId());
+                    pstmt.executeUpdate();
+                }
+
+                // Actualizar la tabla `detalle_pedidos`
+                String sqlDetalle = "UPDATE detalle_pedidos SET id_producto = ?, cantidad = ?, precio_producto = ?, subtotal = ? WHERE id_pedido = ?";
+                try (PreparedStatement pstmt = connection.prepareStatement(sqlDetalle)) {
+                    pstmt.setInt(1, idProducto);
+                    pstmt.setInt(2, cantidad);
+                    pstmt.setDouble(3, precioProducto);
+                    pstmt.setDouble(4, totalPedido);
+                    pstmt.setInt(5, pedidoSeleccionado.getId());
+                    pstmt.executeUpdate();
+                }
+
+                // Recargar la tabla con los datos actualizados
+                cargarPedidos();
+                mostrarAlerta("Éxito", "Pedido modificado correctamente.");
+            } else {
+                mostrarAlerta("Error", "Producto no encontrado.");
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
             mostrarAlerta("Error", "No se pudo modificar el pedido.");
         }
     }
+
 
     @FXML
     private void buscarPedido() {
@@ -276,19 +314,56 @@ public class PedidoController {
         tableView.setOnMouseClicked(event -> {
             Pedido pedido = tableView.getSelectionModel().getSelectedItem();
             if (pedido != null) {
+                // Seleccionar el cliente en el ChoiceBox
                 for (String cliente : choiceClientes.getItems()) {
                     if (Integer.parseInt(cliente.split(" - ")[0]) == pedido.getIdCliente()) {
                         choiceClientes.setValue(cliente);
                         break;
                     }
                 }
+
+                // Establecer el total y estado
                 spinnerTotal.getValueFactory().setValue((int) pedido.getTotal());
                 choiceEstado.setValue(pedido.getEstado());
+
+                // Obtener el producto asociado a este pedido desde detalle_pedidos
+                String sql = "SELECT p.nombre FROM productos p " +
+                        "JOIN detalle_pedidos dp ON p.id = dp.id_producto " +
+                        "WHERE dp.id_pedido = ?";
+                try (Connection connection = DatabaseConnection.getConnection();
+                     PreparedStatement pstmt = connection.prepareStatement(sql)) {
+                    pstmt.setInt(1, pedido.getId());
+                    ResultSet rs = pstmt.executeQuery();
+                    if (rs.next()) {
+                        choiceProducto.setValue(rs.getString("nombre"));
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
 
-    // Configuramos spinnerTotal para que solo permita números enteros
+    @FXML
+    private void abrirDetallesPedidos() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("detalle-pedidos-view.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("Detalles del Pedido");
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(btnMostrarPedidos.getScene().getWindow());
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            mostrarAlerta("Error", "No se pudo abrir la ventana de detalles de pedidos.");
+        }
+    }
+
+
     private void configurarSpinnerTotal() {
         SpinnerValueFactory.IntegerSpinnerValueFactory valueFactory =
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10000, 0);
